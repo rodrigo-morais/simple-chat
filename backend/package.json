@@ -6,11 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rodrigo-morais@github.com/rodrigo-morais/chat.git"
+  },
   "keywords": [
     "chat"
   ],
   "author": "Rodrigo Morais <morais.rm@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigo-morais/chat/issues"
+  },
+  "homepage": "https://github.com/rodrigo-morais/chat#readme",
   "dependencies": {
     "socket.io": "^2.0.3"
   }
