@@ -30,3 +30,44 @@ html, body {
   border: 0;
   border-radius: 5%;
 }
+
+.conversation-container {
+}
+
+.conversation-container form {
+  background: #000000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+ 
+.conversation-container form input {
+  border: 0;
+  padding: 10px;
+  width: 88%;
+  margin-right: .5%;
+}
+
+.conversation-container form button {
+  width: 9%;
+  background: #82E0FF;
+  border: none;
+  padding: 10px;
+}
+
+.conversation-container .conversation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.conversation-container .conversation li {
+  padding: 5px 10px;
+}
+
+.conversation-container .conversation li:nth-child(odd) {
+  background: #eee;
+}
+
+.conversation-container .conversation { margin-bottom: 40px }
