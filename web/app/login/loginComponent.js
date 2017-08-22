@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { joinChat } from '../libs/socket.io'
+
 const Login = ({ userName, join, changeUser }) => {
 
   const joinUser = (event) => {
@@ -10,6 +12,7 @@ const Login = ({ userName, join, changeUser }) => {
       changeUser('anonymous')
     }
 
+    joinChat(userName)
     join()
   }
 
