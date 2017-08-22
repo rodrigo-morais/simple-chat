@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  background-color: #f9f9f9;
+}
+
+#app {
+  height: 100100%;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  width: 100%;
+}
+
+.login-container input {
+  width: 70%;
+  margin-right: 2%;
+  font-size: 2em;
+}
+
+.login-container button {
+  width: 20%;
+  height: 100%;
+  font-size: 2em;
+  background-color: #0059b2;
+  color: #FFFFFF;
+  border: 0;
+  border-radius: 5%;
+}
