@@ -18,7 +18,7 @@ App.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  joined: state.chat.joined
+  joined: state.login.joined
 })
 
 const mapDispatchToProps = dispatch => {

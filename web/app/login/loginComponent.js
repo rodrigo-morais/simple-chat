@@ -17,6 +17,8 @@ const Login = ({ userName, join, changeUser }) => {
   }
 
   const changeName = (event) => changeUser(event.target.value)
+
+
   const buildJoinButton = () => <button onClick={joinUser}>Join</button>
 
   return (

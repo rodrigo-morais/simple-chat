@@ -25,7 +25,7 @@ LoginContainer.propTypes = {
 
 const mapStateToProps = state => (
 {
-  userName: state.chat.userName
+  userName: state.login.userName
 })
 
 const mapDispatchToProps = dispatch => {

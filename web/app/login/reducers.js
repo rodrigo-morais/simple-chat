@@ -16,7 +16,7 @@ const initialState = {
   joined: false
 }
 
-const chat = (state = initialState, action) => {
+const login = (state = initialState, action) => {
   switch(action.type) {
     case CHANGE_USER_NAME:
       return  {...state
@@ -31,4 +31,4 @@ const chat = (state = initialState, action) => {
   }
 }
 
-export default chat
+export default login

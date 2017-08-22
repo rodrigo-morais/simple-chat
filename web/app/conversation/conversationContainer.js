@@ -2,25 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-const ConversationContainer = () => {
+import { addMessage } from './reducers'
+
+import ConversationComponent from './conversationComponent'
+
+const ConversationContainer = ({ userName, messages, newMessage }) => {
   
   return (
-    <div className="conversation-container">
-      <ul className="conversation"></ul>
-      <form action="">
-        <input id="message" /><button>Send</button>
-      </form>
-    </div>
+    <ConversationComponent
+      userName={userName}
+      messages={messages}
+      addMessage={newMessage}
+    />
   )
 }
 
 ConversationContainer.propTypes = {
+  userName: PropTypes.string.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    userName: PropTypes.string,
+    message: PropTypes.string
+  })).isRequired,
+  newMessage: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  userName: state.login.userName,
+  messages: state.conversation.messages
+})
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    newMessage: (message) => dispatch(addMessage(message))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConversationContainer)
