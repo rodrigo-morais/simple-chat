@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import createLogger from 'redux-logger'
+import logger from 'redux-logger'
 
+import chat from './login/reducers'
 
-const reducers = combineReducers({ })
+const reducers = combineReducers({ chat })
 
 const middlewares = []
-if (process.env.NODE_ENV === `development`) {
-  const logger = createLogger()
+if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger)
 }
 
