@@ -10,7 +10,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('message', function(name, msg){
-      socket.broadcast.emit('message', `${name}: ${msg}`);
+      socket.broadcast.emit('newMessage',name, msg);
     });
 });
 

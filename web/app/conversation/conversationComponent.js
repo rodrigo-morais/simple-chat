@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { newJoiners } from '../libs/socket.io'
+import { newJoiners, sendMessage, receiveMessage } from '../libs/socket.io'
 
 const Conversation = ({ userName, messages, addMessage }) => {
   newJoiners(addMessage)
+  receiveMessage(addMessage)
 
   const insertMessage = (event) => {
     event.preventDefault()
@@ -17,14 +18,20 @@ const Conversation = ({ userName, messages, addMessage }) => {
       type: 'message'
     })
 
+    sendMessage(userName, input.value)
+
     input.value = ''
   }
 
   const buildSendButton = () => <button onClick={insertMessage}>Send</button>
 
-  const getItem = ({ userName, message, type }, index) => (
-    type === 'message' ? <li key={index}>{userName}: {message}</li> : <li key={index}>{message}</li>
-  )
+  const getItem = ({ userName, message, type }, index) => {
+    if(type === 'message') {
+      return (<li key={index}>{userName}: {message}</li>)
+    } else {
+      return (<li key={index}>{message}</li>)
+    }
+  }
 
   return (
     <div className="conversation-container">
