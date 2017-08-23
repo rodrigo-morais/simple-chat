@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { newJoiners, sendMessage, receiveMessage } from '../libs/socket.io'
+import { sendMessage } from '../libs/socket.io'
 
 const Conversation = ({ userName, messages, addMessage }) => {
-  newJoiners(addMessage)
-  receiveMessage(addMessage)
 
   const insertMessage = (event) => {
     event.preventDefault()
