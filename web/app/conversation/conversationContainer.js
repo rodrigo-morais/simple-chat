@@ -7,7 +7,6 @@ import { addMessage } from './reducers'
 import ConversationComponent from './conversationComponent'
 
 const ConversationContainer = ({ userName, messages, newMessage }) => {
-  
   return (
     <ConversationComponent
       userName={userName}
@@ -21,7 +20,8 @@ ConversationContainer.propTypes = {
   userName: PropTypes.string.isRequired,
   messages: PropTypes.arrayOf(PropTypes.shape({
     userName: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.string,
+    type: PropTypes.string
   })).isRequired,
   newMessage: PropTypes.func.isRequired
 }

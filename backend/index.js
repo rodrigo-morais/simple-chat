@@ -1,10 +1,8 @@
 const io = require('socket.io')();
 
 io.on('connection', function(socket){
-    console.log('a user connected');
-
     socket.on('join', function(name) {
-      io.emit('join', `user ${name} is chatting now!`);
+      socket.broadcast.emit('newJoiner', `user ${name} is chatting now!`);
     });
 
     socket.on('leave', function(name){

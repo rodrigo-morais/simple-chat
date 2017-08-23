@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { newJoiners } from '../libs/socket.io'
+
 const Conversation = ({ userName, messages, addMessage }) => {
+  newJoiners(addMessage)
 
   const insertMessage = (event) => {
     event.preventDefault()
@@ -10,7 +13,8 @@ const Conversation = ({ userName, messages, addMessage }) => {
 
     addMessage({
       userName,
-      message: input.value
+      message: input.value,
+      type: 'message'
     })
 
     input.value = ''
@@ -18,8 +22,8 @@ const Conversation = ({ userName, messages, addMessage }) => {
 
   const buildSendButton = () => <button onClick={insertMessage}>Send</button>
 
-  const getItem = ({ userName, message }, index) => (
-    <li key={index}>{userName}: {message}</li>
+  const getItem = ({ userName, message, type }, index) => (
+    type === 'message' ? <li key={index}>{userName}: {message}</li> : <li key={index}>{message}</li>
   )
 
   return (
@@ -39,7 +43,8 @@ Conversation.propTypes = {
   userName: PropTypes.string.isRequired,
   messages: PropTypes.arrayOf(PropTypes.shape({
     userName: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.string,
+    type: PropTypes.string
   })).isRequired,
   addMessage: PropTypes.func.isRequired
 }
