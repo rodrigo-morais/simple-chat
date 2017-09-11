@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import UserList from '../userList/userListContainer'
+
 import { sendMessage } from '../libs/socket.io'
 
 const Conversation = ({ userName, messages, addMessage }) => {
@@ -36,6 +38,7 @@ const Conversation = ({ userName, messages, addMessage }) => {
       <ul className="conversation">
         {messages.map(getItem)}
       </ul>
+      <UserList />
       <form action="">
         <input id="message" />
         {buildSendButton()}

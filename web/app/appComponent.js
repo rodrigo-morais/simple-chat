@@ -4,8 +4,24 @@ import { connect } from 'react-redux'
 
 import LoginContainer from './login/loginContainer'
 import ConversationContainer from './conversation/conversationContainer'
+import { getUserName } from './libs/localStorage'
+import { joinChat, allUsers } from './libs/socket.io'
+import { changeUserName, joinChat as join } from './login/reducers'
+import { setUsers } from './userList/reducers'
 
-const App = ({ joined }) => {
+const App = ({ joined, join, changeUser, setUsers }) => {
+  if (!joined) {
+    const userName = getUserName()
+    
+    allUsers(setUsers);
+
+    if (userName) {
+      joinChat(userName)
+      changeUser(userName)
+      join()
+    }
+  }
+
   return (
     <div className='app-container'>
      { joined ? <ConversationContainer /> : <LoginContainer /> }
@@ -22,7 +38,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    join : () => dispatch(join()),
+    changeUser : userName => dispatch(changeUserName(userName)),
+    setUsers : users => dispatch(setUsers(users)),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
